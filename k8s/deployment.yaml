@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rollback-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rollback-app
+  template:
+    metadata:
+      labels:
+        app: rollback-app
+    spec:
+      containers:
+      - name: rollback-app
+        image: neeraj6672/rollback-app:v1
+        ports:
+        - containerPort: 5000
